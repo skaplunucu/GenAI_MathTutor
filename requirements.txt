@@ -1,0 +1,63 @@
+# Math Tutor Project - Unified Requirements
+# ==========================================
+
+# Core RAG Components
+langchain>=0.1.0
+langchain-community>=0.0.20
+chromadb>=0.4.22
+sentence-transformers>=2.3.1
+
+# LLM Providers
+openai>=1.10.0
+google-generativeai>=0.3.0
+anthropic>=0.8.0
+
+# LLM & ML Framework
+transformers>=4.37.0
+torch>=2.1.0
+accelerate>=0.26.0
+bitsandbytes>=0.42.0
+
+# Document Processing
+pymupdf>=1.23.0
+pdfplumber>=0.10.0
+python-docx>=1.1.0
+ebooklib>=0.18
+beautifulsoup4>=4.12.0
+
+# Vector Operations
+faiss-cpu>=1.7.4
+numpy>=1.24.0
+
+# Text Processing
+nltk>=3.8.1
+spacy>=3.7.0
+# After install, run: python -m spacy download uk_core_news_sm
+
+# Evaluation
+scikit-learn>=1.4.0
+rouge-score>=0.1.2
+
+# Data Handling
+pandas>=2.2.0
+datasets>=2.16.0
+
+# Jupyter & Notebooks
+jupyter>=1.0.0
+nbconvert>=7.0.0
+ipykernel>=6.0.0
+papermill>=2.4.0
+ipywidgets>=8.1.0
+
+# Visualization
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# API & Networking
+requests>=2.31.0
+
+# Utilities
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+pyyaml>=6.0.1
+psutil>=5.9.0

@@ -1,0 +1,597 @@
+{
+  "experiment": "advanced_rag",
+  "description": "Query expansion + hybrid retrieval + re-ranking",
+  "model": "gemma-2-9b-it",
+  "config": {
+    "query_expansions": 3,
+    "retrieval_k": 15,
+    "final_k": 5,
+    "relevance_weight": 0.5,
+    "diversity_weight": 0.3,
+    "content_type_weight": 0.2
+  },
+  "avg_metrics": {
+    "overall_score": 0.7561704206430312,
+    "retrieval_quality": 0.7690774130821229,
+    "rerank_quality": 0.7758724840512475,
+    "ukrainian_ratio": 0.8947784109587693,
+    "completeness": 0.987,
+    "correctness": 0.06666666666666667,
+    "structure_rate": 0.9333333333333333,
+    "citation_rate": 0.06666666666666667
+  },
+  "responses": [
+    {
+      "question": "Квадратні рівняння",
+      "expanded_queries": [
+        "Квадратні рівняння",
+        "## Перефразування питання \"Квадратні рівняння\":",
+        "1. **Чи знаєте ви, як розв'язувати рівняння другого степеня?**"
+      ],
+      "answer": "**Задача:** Розв'яжіть рівняння:  x² - 3x + 2 = 0\n\n**Розв'язання:**\n\nДля розв'язування квадратного рівняння x² - 3x + 2 = 0 можна використовувати формулу для розв'язування квадратних рівнянь:\n\nx = (-b ± √(b² - 4ac)) / 2a\n\nде a, b та c - коефіцієнти рівняння.\n\nУ нашому випадку a = 1, b = -3, c = 2. Підставляємо ці значення у формулу:\n\nx = (3 ± √((-3)² - 4 * 1 * 2)) / (2 * 1)\n\nx = (3 ± √(9 - 8)) / 2\n\nx = (3 ± √1) / 2\n\nx = (3 ± 1) / 2\n\nОтже, отримуємо два розв'язки:\n\nx₁ = (3 + 1) / 2 = 2\n\nx₂ = (3 - 1) / 2 = 1\n\n**Відповідь:** 1, 2",
+      "citations": [
+        "[merzlyak-ag-algebra-i-pochatky-analizu-prof-riven-11-kl.pdf, с. 19-19]",
+        "[geometriya-pidruchnyk-dlya-9-klasu-zagalnoosvitnih-navchalnyh-zakladiv-jershova-a-p-goloborodko-v-v-kryzhanovskyy-o-f-jershov-s-v-1.pdf, с. 48-48]",
+        "[ister-algeb-p-9ukr-054-13-s.pdf, с. 126-126]",
+        "[matematika-alhebra-i-pochatki-analizu-ta-heometriia-riven-standartu-pidruchnyk-dlia-11-klasu-zzso-avt-nelin-ye-p-1.pdf, с. 26-26]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-11-klasu-zzso-avt-nelin-ye-p-dolgova-o-ye.pdf, с. 26-26]"
+      ],
+      "avg_relevance": 0.7810898900032044,
+      "avg_rerank_score": 0.7785449450016022,
+      "answer_length": 532,
+      "num_chunks": 5
+    },
+    {
+      "question": "Квадратні рівняння",
+      "expanded_queries": [
+        "Квадратні рівняння",
+        "##  Варіанти перефразування:",
+        "1.  **Чи знаєте ви, як розв'язувати рівняння другого ступеня?**"
+      ],
+      "answer": "**Задача:**  Розв'яжіть рівняння 2x² - 3x = 5x + 1\n\n**Розв'язання:**\n\n1. **Перемістимо всі члени рівняння в одну частину:**\n   2x² - 3x - 5x - 1 = 0\n2. **Згрупуємо подібні члени:**\n   2x² - 8x - 1 = 0\n3. **Використовуємо формулу для розв'язування квадратного рівняння:**\n   x = (-b ± √(b² - 4ac)) / 2a\n   де a = 2, b = -8, c = -1\n4. **Підставимо значення:**\n   x = (8 ± √((-8)² - 4 * 2 * -1)) / (2 * 2)\n   x = (8 ± √(64 + 8)) / 4\n   x = (8 ± √72) / 4\n   x = (8 ± 6√2) / 4\n5. **Зокремлюємо корені:**\n   x₁ = (8 + 6√2) / 4 = 2 + (3/2)√2\n   x₂ = (8 - 6√2) / 4 = 2 - (3/2)√2\n\n**Відповідь:**  x₁ = 2 + (3/2)√2, x₂ = 2 - (3/2)√2",
+      "citations": [
+        "[merzlyak-ag-algebra-i-pochatky-analizu-prof-riven-11-kl.pdf, с. 19-19]",
+        "[geometriya-pidruchnyk-dlya-9-klasu-zagalnoosvitnih-navchalnyh-zakladiv-jershova-a-p-goloborodko-v-v-kryzhanovskyy-o-f-jershov-s-v-1.pdf, с. 48-48]",
+        "[ister-algeb-p-9ukr-054-13-s.pdf, с. 126-126]",
+        "[Підручник_МАТ_6кл_Кравчук_2023.pdf, с. 246-246]",
+        "[merzlyak-ag-matematyka-algebra-i-poch-analizu-ta-geometriya-riven-standartu-11-kl.pdf, с. 17-17]"
+      ],
+      "avg_relevance": 0.784899115562439,
+      "avg_rerank_score": 0.7715579169143465,
+      "answer_length": 622,
+      "num_chunks": 5
+    },
+    {
+      "question": "Квадратні рівняння",
+      "expanded_queries": [
+        "Квадратні рівняння",
+        "**Оригінальне запитання:**",
+        "Квадратні рівняння"
+      ],
+      "answer": "## **Задача:**\n\nЗнайдіть площу другого квадрата, якщо площа першого квадрата дорівнює 1 м², а площа другого квадрата на 10% більша за площу першого.\n\n## **Розв'язання:**\n\n1. **Обчислимо площу другого квадрата:**\n   - Площа першого квадрата: 1 м²\n   - Відсоток збільшення площі: 10%\n   - Збільшення площі: 1 м² * 10/100 = 0.1 м²\n   - Площа другого квадрата: 1 м² + 0.1 м² = 1.1 м²\n\n2. **Відповідь:** Площа другого квадрата дорівнює 1.1 м².\n\n\n\n## **Примітки:**\n\n* Ця задача використовує поняття про відсотки та обчислення площі квадрата.\n* Формула площі квадрата:  *a*² (де *a* - сторона квадрата).",
+      "citations": [
+        "[geometriya-pidruchnyk-dlya-9-klasu-zagalnoosvitnih-navchalnyh-zakladiv-jershova-a-p-goloborodko-v-v-kryzhanovskyy-o-f-jershov-s-v-1.pdf, с. 48-48]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-10-klasu-zzso-nelin-ye-p.pdf, с. 161-161]",
+        "[gymnasia-merzlyak-algebra-9-klas-poglyb.pdf, с. 38-38]",
+        "[Підручник_МАТ_6кл_Кравчук_2023.pdf, с. 246-246]",
+        "[ister-geometriyapr-p-11ukr-082-18-s.pdf, с. 143-143]"
+      ],
+      "avg_relevance": 0.7579062342643738,
+      "avg_rerank_score": 0.7538622080412777,
+      "answer_length": 596,
+      "num_chunks": 5
+    },
+    {
+      "question": "Теорема Піфагора",
+      "expanded_queries": [
+        "Теорема Піфагора",
+        "1.  Чи можеш ти пояснити, що таке теорема Піфагора та як її застосовувати?",
+        "2.  Які є наслідки та застосування теореми Піфагора в геометрії?"
+      ],
+      "answer": "**Задача:**  Знайдіть довжину сторони *a* прямокутного трикутника, якщо довжина його інших сторін *b* = 5 см і *c* = 12 см.\n\n**Розв'язання:**\n\nВикористаємо теорему Піфагора:\n\n*a² = b² + c²*\n\nПідставимо значення *b* і *c*:\n\n*a² = 5² + 12²*\n\n*a² = 25 + 144*\n\n*a² = 169*\n\nЗнайдемо корені з обох частин рівності:\n\n*a = √169*\n\n*a = 13 см*\n\n**Відповідь:** Довжина сторони *a* прямокутного трикутника дорівнює 13 см.",
+      "citations": [
+        "[matematyka-10kl-nelin-ranok.pdf, с. 191-191]",
+        "[gymnasia-merzlyak-geometry-9-klas.pdf, с. 16-16]",
+        "[ister-geom-p-9ukr-183-12-s.pdf, с. 99-99]",
+        "[merzlyak-ag-matematyka-alg-i-poch-analizu-ta-geom-riven-standartu-10-kl.pdf, с. 190-190]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-10-klasu-zzso-nelin-ye-p.pdf, с. 144-144]"
+      ],
+      "avg_relevance": 0.7541025042533874,
+      "avg_rerank_score": 0.7483453697737525,
+      "answer_length": 409,
+      "num_chunks": 5
+    },
+    {
+      "question": "Теорема Піфагора",
+      "expanded_queries": [
+        "Теорема Піфагора",
+        "1.  **Чи можете ви пояснити Теорему Піфагора?**",
+        "2.  **Яка теорема стосується відношення між сторонами прямокутного трикутника?**"
+      ],
+      "answer": "**Задача:** \n\nУ трикутнику ABC з прямокутним кутом при вершині C довжина сторони AB (гіпотенуза) дорівнює 10 см, а сторона AC дорівнює 6 см. Знайдіть довжину сторони BC.\n\n**Розв'язання:**\n\nУ прямокутному трикутнику виконується теорема Піфагора:\n\nBC² = AB² - AC²\n\nПідставимо значення AB = 10 см та AC = 6 см у формулу:\n\nBC² = 10² - 6² = 100 - 36 = 64\n\nЗнайдемо квадратний корінь з обох сторін рівняння:\n\nBC = √64 = 8 см\n\n**Відповідь:** Довжина сторони BC дорівнює 8 см.",
+      "citations": [
+        "[matematyka-10kl-nelin-ranok.pdf, с. 191-191]",
+        "[gymnasia-merzlyak-geometry-9-klas.pdf, с. 16-16]",
+        "[merzlyak-ag-geometriya-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 127-127]",
+        "[orion-9-geometry.pdf, с. 197-198]",
+        "[gymnasia-merzlyak-geometry-9-klas-poglyb.pdf, с. 22-22]"
+      ],
+      "avg_relevance": 0.8118432641029358,
+      "avg_rerank_score": 0.7582549653848012,
+      "answer_length": 468,
+      "num_chunks": 5
+    },
+    {
+      "question": "Теорема Піфагора",
+      "expanded_queries": [
+        "Теорема Піфагора",
+        "1.  **Чи можете ви пояснити, як працює теорема Піфагора?**",
+        "2.  **Яка сутність теореми Піфагора та як її можна застосувати в практиці?**"
+      ],
+      "answer": "**Задача:**\n\nУ трикутнику ABC відомі сторони AB = 5 см, BC = 7 см та кут ABC = 60°. Знайти довжину сторони AC.\n\n**Розв'язання:**\n\nДля розв'язання цієї задачі можна використати теорему косинусів:\n\nAC² = AB² + BC² - 2 * AB * BC * cos(ABC)\n\nПідставляємо відомі значення:\n\nAC² = 5² + 7² - 2 * 5 * 7 * cos(60°)\n\nAC² = 25 + 49 - 70 * 0.5\n\nAC² = 74 - 35\n\nAC² = 39\n\nAC = √39 ≈ 6.24 см\n\n**Відповідь:** Довжина сторони AC приблизно дорівнює 6.24 см.",
+      "citations": [
+        "[ister-geom-p-9ukr-183-12-s.pdf, с. 99-99]",
+        "[geometriya-pidruchnyk-dlya-9-klasu-zagalnoosvitnih-navchalnyh-zakladiv-jershova-a-p-goloborodko-v-v-kryzhanovskyy-o-f-jershov-s-v-1.pdf, с. 17-17]",
+        "[orion-9-geometry.pdf, с. 197-198]",
+        "[gymnasia-merzlyak-geometry-9-klas.pdf, с. 16-16]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-10-klasu-zzso-nelin-ye-p.pdf, с. 144-144]"
+      ],
+      "avg_relevance": 0.7363671779632568,
+      "avg_rerank_score": 0.7788502556482951,
+      "answer_length": 439,
+      "num_chunks": 5
+    },
+    {
+      "question": "Площа трикутника",
+      "expanded_queries": [
+        "Площа трикутника",
+        "1.  Як обчислити площу трикутника?",
+        "2.  Яка формула для визначення площі трикутника?"
+      ],
+      "answer": "**Задача:**  \n\nУ рівнобедреному трикутнику з бічною стороною 13 см і основою 5√13 см знайти кут між бічними сторонами.\n\n**Розв'язання:**\n\n1. **Зобразимо трикутник:** Намалюємо рівнобедрений трикутник ABC з основою BC = 5√13 см і бічними сторонами AB = AC = 13 см.\n\n2. **Проведемо висоту:** З вершини A проведемо висоту AD, яка буде перпендикулярна до основи BC.\n\n3. **Розділимо трикутник:** Висота AD розділить рівнобедрений трикутник на два прямокутні трикутники ABD та ACD.\n\n4. **Використовуємо теорему Піфагора:** В прямокутному трикутнику ABD (або ACD): \n   * AD² + (BC/2)² = AB²\n\n   Підставимо відомі значення: \n   * AD² + (5√13 / 2)² = 13²\n\n   * AD² + (65/4) = 169\n   * AD² = 169 - (65/4) = 571/4\n\n   * AD = √(571/4) = √571 / 2\n\n5. **Використовуємо тригонометричні співвідношення:** В прямокутному трикутнику ABD:\n   * sin(∠BAD) = (BD / AB) = (BC/2) / AB = (5√13 / 2) / 13 = √13 / 26\n\n   * ∠BAD = arcsin(√13 / 26)\n\n6. **Знайдемо кут між бічними сторонами:** Кут між бічними сторонами трикутника ABC дорівнює подвійному куту BAD:\n   * ∠ABC = 2 * ∠BAD = 2 * arcsin(√13 / 26)\n\n**Відповідь:** Кут між бічними сторонами рівнобедреного трикутника дорівнює 2 * arcsin(√13 / 26).",
+      "citations": [
+        "[matematyka-10-klas-bevz-osvita.pdf, с. 234-234]",
+        "[geometriya-pidruchnyk-dlya-9-klasu-zagalnoosvitnih-navchalnyh-zakladiv-jershova-a-p-goloborodko-v-v-kryzhanovskyy-o-f-jershov-s-v-1.pdf, с. 51-51]",
+        "[gymnasia-merzlyak-geometry-9-klas.pdf, с. 24-24]",
+        "[merzlyak-ag-geometriya-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 204-204]",
+        "[Геометрія_7_кл_ІМЗО.pdf, с. 129-129]"
+      ],
+      "avg_relevance": 0.8449694156646729,
+      "avg_rerank_score": 0.866837649008807,
+      "answer_length": 1177,
+      "num_chunks": 5
+    },
+    {
+      "question": "Площа трикутника",
+      "expanded_queries": [
+        "Площа трикутника",
+        "1.  **Яка площа даного трикутника?**",
+        "2.  **Визначте площу трикутника.**"
+      ],
+      "answer": "**Задача:**\n\nУ трикутнику ABC відомі сторони a = 10 см, b = 12 см і кут між ними  β = 120°.  Знайдіть площу цього трикутника.\n\n**Розв'язання:**\n\nДля обчислення площі трикутника за двома сторонами та кутом між ними, використаємо формулу:\n\nS = (1/2) * a * b * sin β\n\nПідставимо відомі значення:\n\nS = (1/2) * 10 см * 12 см * sin 120°\n\nS = 60 см² * (√3 / 2)\n\nS = 30√3 см²\n\n**Відповідь:** Площа трикутника ABC дорівнює 30√3 см².",
+      "citations": [
+        "[orion-9-geometry.pdf, с. 105-105]",
+        "[matematyka-10-klas-bevz-osvita.pdf, с. 234-234]",
+        "[geometryya-9-klass.pdf, с. 144-144]",
+        "[matematyka-10kl-nelin-ranok.pdf, с. 206-206]",
+        "[merzlyak-ag-geometriya-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 204-204]"
+      ],
+      "avg_relevance": 0.8449254631996155,
+      "avg_rerank_score": 0.8762127315998077,
+      "answer_length": 423,
+      "num_chunks": 5
+    },
+    {
+      "question": "Площа трикутника",
+      "expanded_queries": [
+        "Площа трикутника",
+        "1. Яка площа цього трикутника?",
+        "2. Як обчислити площу трикутника?"
+      ],
+      "answer": "**Задача:**  У рівнобедреному трикутнику з основою 10 см і бічною стороною 12 см знайдіть площу круга, описаного навколо цього трикутника.\n\n**Розв'язання:**\n\n1. **Знайдемо радіус описаного кола:**\n    *  У рівнобедреному трикутнику висота, проведена до основи, є також і бісектрисою цього кута.\n    *  Розглянемо прямокутний трикутник, утворений висотою, половиною основи і бічною стороною трикутника.\n    *  Застосуємо теорему Піфагора, щоб знайти довжину висоти (або бісектриси):  h² + 5² = 12²  =>  h² = 144 - 25 = 119 => h = √119.\n    *  Радіус описаного кола дорівнює відстані від вершини трикутника до середини основи. Це також є половиною довжини бісектриси, проведеної з вершини до основи: r = h/2 = √119 / 2.\n\n2. **Обчислимо площу круга:**\n    *  Площа круга дорівнює πr²: S = π * (√119 / 2)² = π * (119 / 4) = (119π) / 4.\n\n**Відповідь:** Площа круга, описаного навколо рівнобедреного трикутника, дорівнює (119π) / 4 см².",
+      "citations": [
+        "[Геометрія_7_кл_ІМЗО.pdf, с. 129-129]",
+        "[geometriya-pidruchnyk-dlya-9-klasu-zagalnoosvitnih-navchalnyh-zakladiv-jershova-a-p-goloborodko-v-v-kryzhanovskyy-o-f-jershov-s-v-1.pdf, с. 51-51]",
+        "[matematyka-10-klas-bevz-osvita.pdf, с. 234-234]",
+        "[matematyka-10kl-nelin-ranok.pdf, с. 206-206]",
+        "[merzlyak-ag-geometriya-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 204-204]"
+      ],
+      "avg_relevance": 0.8526939272880554,
+      "avg_rerank_score": 0.8652392713363353,
+      "answer_length": 930,
+      "num_chunks": 5
+    },
+    {
+      "question": "Об'єм кулі",
+      "expanded_queries": [
+        "Об'єм кулі",
+        "1. Який об'єм має куля?",
+        "2. Визнач об'єм кулі."
+      ],
+      "answer": "**Задача:** Два стрільці зробили по одному пострілу в одну мішень. Ймовірність влучити в мішень для першого стрільця дорівнює 0,9, для другого 0,8. Знайдіть імовірність того, що мішень буде влучена.\n\n**Розв'язання:**\n\n*  **Події:**\n    * A - перший стрілець влучив у мішень.\n    * B - другий стрілець влучив у мішень.\n    * C - мішень влучена.\n\n* **Імовірності:**\n    * P(A) = 0.9 (ймовірність влучити перший стрілець)\n    * P(B) = 0.8 (ймовірність влучити другий стрілець)\n\n* **Завдання:** Знайти P(C) - ймовірність того, що мішень буде влучена.\n\n* **Розв'язуємо:**\n    * Оскільки події A і B незалежні, то ймовірність того, що обидва стрільці влучать, дорівнює добутку їх окремих ймовірностей: P(A ∩ B) = P(A) * P(B) = 0.9 * 0.8 = 0.72\n    *  Але це не єдиний варіант, коли мішень буде влучена:\n        * перший стрілець може влучити, а другий - ні: P(A ∩ B') = P(A) * P(B') = 0.9 * (1 - 0.8) = 0.18\n        * другий стрілець може влучити, а перший - ні: P(A' ∩ B) = P(A') * P(B) = (1 - 0.9) * 0.8 = 0.08\n    *  Тому, щоб знайти загальну ймовірність того, що мішень буде влучена, потрібно скласти ймовірності всіх цих випадків: P(C) = P(A ∩ B) + P(A ∩ B') + P(",
+      "citations": [
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-11-klasu-zzso-avt-nelin-ye-p-dolgova-o-ye.pdf, с. 177-177]",
+        "[Мерзляк_Якір_Алгебра_7кл..pdf, с. 67-67]",
+        "[matematyka-11-kl-bevz.pdf, с. 209-209]",
+        "[ister-geom-p-9ukr-183-12-s.pdf, с. 186-186]",
+        "[merzlyak-ag-geometriya-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 240-240]"
+      ],
+      "avg_relevance": 0.6847251534461976,
+      "avg_rerank_score": 0.7125279902569334,
+      "answer_length": 1162,
+      "num_chunks": 5
+    },
+    {
+      "question": "Об'єм кулі",
+      "expanded_queries": [
+        "Об'єм кулі",
+        "1. **Який об'єм має куля?**",
+        "2. **Визнач об'єм цієї кулі.**"
+      ],
+      "answer": "**Задача:**\n\nМалярка може пофарбувати кімнату за 6 год, а маляр — за 4 год. Спочатку малярка працювала 2 год, а потім до неї приєднався маляр. За скільки годин було пофарбовано кімнату?\n\n**Розв'язання:**\n\n1. **Розрахуємо, скільки роботи виконала малярка за перші 2 години:** \n   - Малярка виконала 2/6 = 1/3 роботи.\n\n2. **Обчислимо, скільки роботи залишилося:**\n   - 1 - 1/3 = 2/3 роботи.\n\n3. **Визначимо, за який час маляр і малярка спільними силами виконають залишилася роботу:**\n   - Нехай x - це час, за який вони виконають разом 2/3 роботи. \n   - За годину малярка виконує 1/6 роботи, а маляр - 1/4 роботи.\n   - Разом вони виконують 1/6 + 1/4 = 5/12 роботи за годину.\n   - Отже, 5/12 * x = 2/3\n\n4. **Знайдемо x:**\n   - x = (2/3) / (5/12) = 8/5 = 1.6 годин.\n\n5. **Підсумок:** \n   - Загальний час, необхідний для пофарбування кімнати, становить 2 + 1.6 = 3.6 години.\n\n\n\n**Відповідь:** Кімнату було пофарбовано за 3.6 години.",
+      "citations": [
+        "[Мерзляк_Якір_Алгебра_7кл..pdf, с. 67-67]",
+        "[matematyka-11-kl-bevz.pdf, с. 209-209]",
+        "[ister-geom-p-9ukr-183-12-s.pdf, с. 186-186]",
+        "[merzlyak-ag-algebra-i-pochatky-analizu-prof-riven-11-kl.pdf, с. 167-167]",
+        "[merzlyak-a-g-algebra-i-poch-analizu-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 152-152]"
+      ],
+      "avg_relevance": 0.702850592136383,
+      "avg_rerank_score": 0.7539252960681916,
+      "answer_length": 927,
+      "num_chunks": 5
+    },
+    {
+      "question": "Об'єм кулі",
+      "expanded_queries": [
+        "Об'єм кулі",
+        "1. **Який об'єм має куля?**",
+        "2. **Визначте об'єм даної кулі.**"
+      ],
+      "answer": "**Задача:**  \nУ кубі з ребром 10 см вписана куля. Знайдіть об'єм кулі.\n\n**Розв'язання:**\n\n1. **Знайти радіус кулі:** \nРадіус кулі дорівнює половині довжини діаметра кулі. Діаметр кулі дорівнює довжині ребра куба, тому радіус кулі дорівнює 10 см / 2 = 5 см.\n\n2. **Застосувати формулу об'єму кулі:**\nОб'єм кулі обчислюється за формулою V = (4/3)πr³, де r - радіус кулі.\n\n3. **Підставити значення радіуса і обчислити об'єм:**\nV = (4/3) * π * (5 см)³ = (4/3) * π * 125 см³ = (500/3)π см³.\n\n**Відповідь:** Об'єм кулі дорівнює (500/3)π см³.",
+      "citations": [
+        "[Мерзляк_Якір_Алгебра_7кл..pdf, с. 67-67]",
+        "[matematyka-11-kl-bevz.pdf, с. 209-209]",
+        "[ister-geom-p-9ukr-183-12-s.pdf, с. 186-186]",
+        "[gymnasia-merzlyak-algebra-9-klas.pdf, с. 266-266]",
+        "[merzlyak-ag-geometriya-prof-riven-11-kl.pdf, с. 64-64]"
+      ],
+      "avg_relevance": 0.6992272019386292,
+      "avg_rerank_score": 0.780510659792844,
+      "answer_length": 534,
+      "num_chunks": 5
+    },
+    {
+      "question": "Логарифми",
+      "expanded_queries": [
+        "Логарифми",
+        "##  Перефразовуємо запитання про логарифми:",
+        "1.  **Яке значення має логарифм заданої величини за певною основою?**"
+      ],
+      "answer": "**Задача:**  Знайдіть область визначення функції:  f(x) = log(6 - x)\n\n**Розв'язання:**\n\n1. **Область визначення логарифмічної функції:**  Область визначення логарифмічної функції  y = log_a(x)  є сукупністю всіх значень аргументу x, для яких  x > 0.\n\n2. **Визначимо область визначення нашої функції:** Для нашої функції f(x) = log(6 - x) потрібно знайти всі значення x, для яких 6 - x > 0.\n\n3. **Розв'яжемо нерівність:** \n   6 - x > 0\n   -x > -6\n   x < 6\n\n4. **Запишемо область визначення:**  Область визначення функції f(x) = log(6 - x)  є інтервал (-∞, 6).\n\n**Відповідь:** Область визначення функції f(x) = log(6 - x) є (-∞, 6).",
+      "citations": [
+        "[merzlyak-a-g-algebra-i-poch-analizu-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 36-36]",
+        "[merzlyak-ag-matematyka-algebra-i-poch-analizu-ta-geometriya-riven-standartu-11-kl.pdf, с. 24-24]",
+        "[merzlyak-ag-matematyka-algebra-i-poch-analizu-ta-geometriya-riven-standartu-11-kl.pdf, с. 32-32]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-11-klasu-zzso-avt-nelin-ye-p-dolgova-o-ye.pdf, с. 95-95]",
+        "[merzlyak-ag-algebra-i-pochatky-analizu-prof-riven-11-kl.pdf, с. 82-82]"
+      ],
+      "avg_relevance": 0.712182080745697,
+      "avg_rerank_score": 0.6819395252213334,
+      "answer_length": 630,
+      "num_chunks": 5
+    },
+    {
+      "question": "Логарифми",
+      "expanded_queries": [
+        "Логарифми",
+        "## Перефразировані запитання про логарифми:",
+        "1. **Які значення числа є аргументами логарифма, якщо результат дорівнює заданій величині?**"
+      ],
+      "answer": "**Задача:**  Розв'яжіть рівняння: 2<sup>x</sup> = 16\n\n**Розв'язання:**\n\n1.  Знайдемо логарифм обох сторін рівняння за основою 2: \n    log₂(2<sup>x</sup>) = log₂16\n\n2.  Застосуємо властивість логарифму степеня: log₂(2<sup>x</sup>) = x\n\n3.  Знайдемо логарифм 16 за основою 2: log₂16 = 4\n\n4.  Тоді x = 4\n\n**Відповідь:** x = 4",
+      "citations": [
+        "[merzlyak-ag-matematyka-algebra-i-poch-analizu-ta-geometriya-riven-standartu-11-kl.pdf, с. 25-25]",
+        "[merzlyak-a-g-algebra-i-poch-analizu-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 35-35]",
+        "[merzlyak-ag-algebra-i-pochatky-analizu-prof-riven-11-kl.pdf, с. 82-82]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-11-klasu-zzso-avt-nelin-ye-p-dolgova-o-ye.pdf, с. 38-38]",
+        "[matematyka-11-kl-bevz.pdf, с. 24-24]"
+      ],
+      "avg_relevance": 0.7943020939826966,
+      "avg_rerank_score": 0.7665510469913482,
+      "answer_length": 322,
+      "num_chunks": 5
+    },
+    {
+      "question": "Логарифми",
+      "expanded_queries": [
+        "Логарифми",
+        "1.  **Який результат отримуємо, коли знаходимо логарифм певного числа відносно заданої основи?**",
+        "2.  **Що таке логарифм числа  за певною основою?**"
+      ],
+      "answer": "**Задача:**\n\nЗнайдіть значення виразу: log 5 ⋅ log 10 ⋅ log 25\n\n**Розв'язання:**\n\n*  Використовуємо властивість логарифмів: log a<sup>b</sup> = b ⋅ log a\n    * log 25 = log 5<sup>2</sup> = 2 ⋅ log 5\n\n* Підставляємо отримане значення в вираз:\n    * log 5 ⋅ log 10 ⋅ log 25 = log 5 ⋅ log 10 ⋅ (2 ⋅ log 5)\n\n* Згадуємо, що log 10 = 1\n    * log 5 ⋅ log 10 ⋅ (2 ⋅ log 5) = log 5 ⋅ 1 ⋅ (2 ⋅ log 5) = 2 ⋅ (log 5)<sup>2</sup>\n\n* Обчислюємо: 2 ⋅ (log 5)<sup>2</sup> ≈ 2 ⋅ 0.699 ≈ 1.398\n\n**Відповідь:** log 5 ⋅ log 10 ⋅ log 25 ≈ 1.398",
+      "citations": [
+        "[merzlyak-ag-matematyka-algebra-i-poch-analizu-ta-geometriya-riven-standartu-11-kl.pdf, с. 24-24]",
+        "[matematyka-11-kl-bevz.pdf, с. 24-24]",
+        "[alhebra-i-pochatky-analizu-profilnyi-riven-pidruchnyk-dlia-11-klasu-zzso-avt-nelin-ye-p-dolgova-o-ye.pdf, с. 38-38]",
+        "[matematyka-11-kl-bevz.pdf, с. 30-30]",
+        "[merzlyak-a-g-algebra-i-poch-analizu-pochatok-vyvch-na-poglyb-rivni-z-8-kl-prof-riven-11-kl.pdf, с. 34-34]"
+      ],
+      "avg_relevance": 0.7740770816802979,
+      "avg_rerank_score": 0.7449274297290378,
+      "answer_length": 523,
+      "num_chunks": 5
+    }
+  ],
+  "evaluations": [
+    {
+      "question": "Квадратні рівняння",
+      "metrics": {
+        "ukrainian_ratio": 0.9112903225806451,
+        "retrieval_quality": 0.7810898900032044,
+        "rerank_quality": 0.7785449450016022,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7617678058958823
+      },
+      "answer_length": 532,
+      "avg_relevance": 0.7810898900032044,
+      "avg_rerank": 0.7785449450016022
+    },
+    {
+      "question": "Квадратні рівняння",
+      "metrics": {
+        "ukrainian_ratio": 0.8858447488584474,
+        "retrieval_quality": 0.784899115562439,
+        "rerank_quality": 0.7715579169143465,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 1.0,
+        "overall_score": 0.9049297420861298
+      },
+      "answer_length": 622,
+      "avg_relevance": 0.784899115562439,
+      "avg_rerank": 0.7715579169143465
+    },
+    {
+      "question": "Квадратні рівняння",
+      "metrics": {
+        "ukrainian_ratio": 0.994750656167979,
+        "retrieval_quality": 0.7579062342643738,
+        "rerank_quality": 0.7538622080412777,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7754529303878425
+      },
+      "answer_length": 596,
+      "avg_relevance": 0.7579062342643738,
+      "avg_rerank": 0.7538622080412777
+    },
+    {
+      "question": "Теорема Піфагора",
+      "metrics": {
+        "ukrainian_ratio": 0.941908713692946,
+        "retrieval_quality": 0.7541025042533874,
+        "rerank_quality": 0.7483453697737525,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7608443595273076
+      },
+      "answer_length": 409,
+      "avg_relevance": 0.7541025042533874,
+      "avg_rerank": 0.7483453697737525
+    },
+    {
+      "question": "Теорема Піфагора",
+      "metrics": {
+        "ukrainian_ratio": 0.9169329073482428,
+        "retrieval_quality": 0.8118432641029358,
+        "rerank_quality": 0.7582549653848012,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7647479612602213
+      },
+      "answer_length": 468,
+      "avg_relevance": 0.8118432641029358,
+      "avg_rerank": 0.7582549653848012
+    },
+    {
+      "question": "Теорема Піфагора",
+      "metrics": {
+        "ukrainian_ratio": 0.8185654008438819,
+        "retrieval_quality": 0.7363671779632568,
+        "rerank_quality": 0.7788502556482951,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7319239652527032
+      },
+      "answer_length": 439,
+      "avg_relevance": 0.7363671779632568,
+      "avg_rerank": 0.7788502556482951
+    },
+    {
+      "question": "Площа трикутника",
+      "metrics": {
+        "ukrainian_ratio": 0.8700564971751412,
+        "retrieval_quality": 0.8449694156646729,
+        "rerank_quality": 0.866837649008807,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7742851839948073
+      },
+      "answer_length": 1177,
+      "avg_relevance": 0.8449694156646729,
+      "avg_rerank": 0.866837649008807
+    },
+    {
+      "question": "Площа трикутника",
+      "metrics": {
+        "ukrainian_ratio": 0.9112903225806451,
+        "retrieval_quality": 0.8449254631996155,
+        "rerank_quality": 0.8762127315998077,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7859933098650748
+      },
+      "answer_length": 423,
+      "avg_relevance": 0.8449254631996155,
+      "avg_rerank": 0.8762127315998077
+    },
+    {
+      "question": "Площа трикутника",
+      "metrics": {
+        "ukrainian_ratio": 0.9804560260586319,
+        "retrieval_quality": 0.8526939272880554,
+        "rerank_quality": 0.8652392713363353,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.8028039863083166
+      },
+      "answer_length": 930,
+      "avg_relevance": 0.8526939272880554,
+      "avg_rerank": 0.8652392713363353
+    },
+    {
+      "question": "Об'єм кулі",
+      "metrics": {
+        "ukrainian_ratio": 0.9425770308123249,
+        "retrieval_quality": 0.6847251534461976,
+        "rerank_quality": 0.7125279902569334,
+        "completeness": 1.0,
+        "has_structure": false,
+        "has_citations": false,
+        "structure_rate": 0.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.6452322292585508
+      },
+      "answer_length": 1162,
+      "avg_relevance": 0.6847251534461976,
+      "avg_rerank": 0.7125279902569334
+    },
+    {
+      "question": "Об'єм кулі",
+      "metrics": {
+        "ukrainian_ratio": 0.9929824561403509,
+        "retrieval_quality": 0.702850592136383,
+        "rerank_quality": 0.7539252960681916,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.766761997265774
+      },
+      "answer_length": 927,
+      "avg_relevance": 0.702850592136383,
+      "avg_rerank": 0.7539252960681916
+    },
+    {
+      "question": "Об'єм кулі",
+      "metrics": {
+        "ukrainian_ratio": 0.9726443768996961,
+        "retrieval_quality": 0.6992272019386292,
+        "rerank_quality": 0.780510659792844,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": true,
+        "structure_rate": 1.0,
+        "citation_rate": 1.0,
+        "correctness": 0.0,
+        "overall_score": 0.7651217734846449
+      },
+      "answer_length": 534,
+      "avg_relevance": 0.6992272019386292,
+      "avg_rerank": 0.780510659792844
+    },
+    {
+      "question": "Логарифми",
+      "metrics": {
+        "ukrainian_ratio": 0.905852417302799,
+        "retrieval_quality": 0.712182080745697,
+        "rerank_quality": 0.6819395252213334,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.7355813452207542
+      },
+      "answer_length": 630,
+      "avg_relevance": 0.712182080745697,
+      "avg_rerank": 0.6819395252213334
+    },
+    {
+      "question": "Логарифми",
+      "metrics": {
+        "ukrainian_ratio": 0.8074866310160428,
+        "retrieval_quality": 0.7943020939826966,
+        "rerank_quality": 0.7665510469913482,
+        "completeness": 0.805,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.6969996289001175
+      },
+      "answer_length": 322,
+      "avg_relevance": 0.7943020939826966,
+      "avg_rerank": 0.7665510469913482
+    },
+    {
+      "question": "Логарифми",
+      "metrics": {
+        "ukrainian_ratio": 0.5690376569037657,
+        "retrieval_quality": 0.7740770816802979,
+        "rerank_quality": 0.7449274297290378,
+        "completeness": 1.0,
+        "has_structure": true,
+        "has_citations": false,
+        "structure_rate": 1.0,
+        "citation_rate": 0.0,
+        "correctness": 0.0,
+        "overall_score": 0.6701100909373418
+      },
+      "answer_length": 523,
+      "avg_relevance": 0.7740770816802979,
+      "avg_rerank": 0.7449274297290378
+    }
+  ]
+}

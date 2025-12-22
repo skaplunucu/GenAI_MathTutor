@@ -1,0 +1,34 @@
+{
+  "timestamp": "20251223_172724",
+  "run_directory": "/home/sskaplun/study/genAI/MathTutor/deliverables/results/run_20251223_172724",
+  "total_experiments": 5,
+  "successful": 5,
+  "failed": 0,
+  "experiments": [
+    {
+      "id": "experiment_01",
+      "name": "Baseline (No RAG)",
+      "executed_notebook": "/home/sskaplun/study/genAI/MathTutor/deliverables/results/run_20251223_172724/experiment_01_executed.ipynb"
+    },
+    {
+      "id": "experiment_02",
+      "name": "Basic RAG",
+      "executed_notebook": "/home/sskaplun/study/genAI/MathTutor/deliverables/results/run_20251223_172724/experiment_02_executed.ipynb"
+    },
+    {
+      "id": "experiment_03",
+      "name": "Advanced RAG",
+      "executed_notebook": "/home/sskaplun/study/genAI/MathTutor/deliverables/results/run_20251223_172724/experiment_03_executed.ipynb"
+    },
+    {
+      "id": "experiment_04",
+      "name": "RAG + Tools",
+      "executed_notebook": "/home/sskaplun/study/genAI/MathTutor/deliverables/results/run_20251223_172724/experiment_04_executed.ipynb"
+    },
+    {
+      "id": "experiment_05",
+      "name": "Multi-Agent",
+      "executed_notebook": "/home/sskaplun/study/genAI/MathTutor/deliverables/results/run_20251223_172724/experiment_05_executed.ipynb"
+    }
+  ]
+}
